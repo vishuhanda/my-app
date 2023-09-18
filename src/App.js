@@ -1,35 +1,28 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 
-function Appl() {
-  return (
-    <div className="App">
-        <div className="container">
-      <Form>
-          <Form.Group className='mb-3' controlId='basicEmail'>
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control type='email' placeholder='Enter Email' />
-              <Form.Text className='text-muted'>
-                  we will never share email with you
-              </Form.Text>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-              Submit
-          </Button>
-          {/*<Button className={}></Button>*/}
-      </Form>
-    </div>
-    </div>
-  );
-}
+import Header from "./pages/Header";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
 
-export default Appl;
+
+export default function Appl(){
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Header/>}>
+                        <Route path="blogs" element={<Blogs />} />
+                        <Route path="contact" element={<Contact />} />
+                        <Route path="home" element={<Home />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+
+        </div>
+    );
+
+};
+
+
